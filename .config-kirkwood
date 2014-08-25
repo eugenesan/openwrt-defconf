@@ -40,6 +40,7 @@ CONFIG_TARGET_kirkwood_RD88F6281-LEGACY=y
 # CONFIG_TARGET_kirkwood_IB62X0 is not set
 # CONFIG_TARGET_kirkwood_ICONNECT is not set
 # CONFIG_TARGET_kirkwood_POGOE02 is not set
+# CONFIG_TARGET_kirkwood_EA4500 is not set
 CONFIG_TARGET_BOARD="kirkwood"
 CONFIG_TARGET_ARCH_PACKAGES="kirkwood"
 CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -march=armv5te -mtune=xscale"
@@ -147,21 +148,20 @@ CONFIG_SHADOW_PASSWORDS=y
 CONFIG_KERNEL_PRINTK=y
 CONFIG_KERNEL_SWAP=y
 CONFIG_KERNEL_DEBUG_FS=y
-CONFIG_KERNEL_PERF_EVENTS=y
-CONFIG_KERNEL_PROFILING=y
+# CONFIG_KERNEL_PERF_EVENTS is not set
+# CONFIG_KERNEL_PROFILING is not set
 CONFIG_KERNEL_KALLSYMS=y
 # CONFIG_KERNEL_FTRACE is not set
-CONFIG_KERNEL_DEBUG_KERNEL=y
-CONFIG_KERNEL_DEBUG_INFO=y
-CONFIG_KERNEL_DEBUG_LL_UART_NONE=y
-CONFIG_KERNEL_DEBUG_LL=y
+# CONFIG_KERNEL_DEBUG_KERNEL is not set
+# CONFIG_KERNEL_DEBUG_INFO is not set
+# CONFIG_KERNEL_DEBUG_LL_UART_NONE is not set
+# CONFIG_KERNEL_DEBUG_LL is not set
 # CONFIG_KERNEL_DYNAMIC_DEBUG is not set
-CONFIG_KERNEL_EARLY_PRINTK=y
+# CONFIG_KERNEL_EARLY_PRINTK is not set
 # CONFIG_KERNEL_AIO is not set
 CONFIG_KERNEL_DIRECT_IO=y
-CONFIG_KERNEL_MAGIC_SYSRQ=y
-CONFIG_KERNEL_COREDUMP=y
-CONFIG_KERNEL_ELF_CORE=y
+# CONFIG_KERNEL_MAGIC_SYSRQ is not set
+# CONFIG_KERNEL_ELF_CORE is not set
 # CONFIG_KERNEL_PROVE_LOCKING is not set
 CONFIG_KERNEL_PRINTK_TIME=y
 # CONFIG_KERNEL_SLABINFO is not set
@@ -186,9 +186,8 @@ CONFIG_PKG_BUILD_USE_JOBSERVER=y
 # Stripping options
 #
 # CONFIG_NO_STRIP is not set
-CONFIG_USE_STRIP=y
-# CONFIG_USE_SSTRIP is not set
-CONFIG_STRIP_ARGS="--strip-all"
+# CONFIG_USE_STRIP is not set
+CONFIG_USE_SSTRIP=y
 # CONFIG_STRIP_KERNEL_EXPORTS is not set
 # CONFIG_USE_MKLIBS is not set
 CONFIG_USE_UCLIBCXX=y
@@ -1283,7 +1282,6 @@ CONFIG_PACKAGE_diffutils=y
 # CONFIG_PACKAGE_lttng-tools is not set
 # CONFIG_PACKAGE_make is not set
 CONFIG_PACKAGE_objdump=y
-# CONFIG_PACKAGE_oprofile is not set
 CONFIG_PACKAGE_patch=y
 CONFIG_PACKAGE_perf=y
 # CONFIG_PACKAGE_python-sip is not set
@@ -1701,7 +1699,6 @@ CONFIG_PACKAGE_kmod-mmc=y
 CONFIG_PACKAGE_kmod-mvsdio=y
 # CONFIG_PACKAGE_kmod-nand is not set
 # CONFIG_PACKAGE_kmod-nandsim is not set
-# CONFIG_PACKAGE_kmod-oprofile is not set
 # CONFIG_PACKAGE_kmod-pps is not set
 # CONFIG_PACKAGE_kmod-pps-gpio is not set
 # CONFIG_PACKAGE_kmod-ptp is not set
@@ -2220,6 +2217,7 @@ CONFIG_PACKAGE_bluez-libs=y
 # CONFIG_PACKAGE_confuse is not set
 # CONFIG_PACKAGE_credis is not set
 # CONFIG_PACKAGE_directfb is not set
+# CONFIG_PACKAGE_dtndht is not set
 # CONFIG_PACKAGE_engine_pkcs11 is not set
 # CONFIG_PACKAGE_fcgi is not set
 # CONFIG_PACKAGE_fftw3 is not set
@@ -2230,6 +2228,8 @@ CONFIG_PACKAGE_bluez-libs=y
 # CONFIG_PACKAGE_glib1 is not set
 CONFIG_PACKAGE_glib2=y
 # CONFIG_PACKAGE_glibmm is not set
+# CONFIG_PACKAGE_ibrcommon is not set
+# CONFIG_PACKAGE_ibrdtn is not set
 # CONFIG_PACKAGE_id3lib is not set
 # CONFIG_PACKAGE_jansson is not set
 # CONFIG_PACKAGE_libIDL2 is not set
@@ -2239,6 +2239,7 @@ CONFIG_PACKAGE_glib2=y
 # CONFIG_PACKAGE_libao is not set
 # CONFIG_PACKAGE_libapr is not set
 # CONFIG_PACKAGE_libaprutil is not set
+# CONFIG_PACKAGE_libarchive is not set
 # CONFIG_PACKAGE_libart is not set
 # CONFIG_PACKAGE_libassuan is not set
 # CONFIG_PACKAGE_libatomicops is not set
@@ -2322,6 +2323,7 @@ CONFIG_PACKAGE_libexpat=y
 # CONFIG_PACKAGE_libfaad2 is not set
 # CONFIG_PACKAGE_libfaifa is not set
 CONFIG_PACKAGE_libffi=y
+# CONFIG_PACKAGE_libffmpeg-audio-dec is not set
 # CONFIG_PACKAGE_libffmpeg-custom is not set
 # CONFIG_PACKAGE_libffmpeg-full is not set
 # CONFIG_PACKAGE_libffmpeg-mini is not set
@@ -2333,7 +2335,6 @@ CONFIG_PACKAGE_libffi=y
 CONFIG_PACKAGE_libgcrypt=y
 CONFIG_PACKAGE_libgd=y
 # CONFIG_PACKAGE_libgee is not set
-CONFIG_PACKAGE_libgmp=y
 CONFIG_PACKAGE_libgpg-error=y
 # CONFIG_PACKAGE_libgpgme is not set
 # CONFIG_PACKAGE_libgphoto2 is not set
@@ -2346,10 +2347,10 @@ CONFIG_PACKAGE_libgpg-error=y
 # CONFIG_PACKAGE_libgupnp-av is not set
 # CONFIG_PACKAGE_libgupnp-dlna is not set
 # CONFIG_PACKAGE_libhamlib is not set
-# CONFIG_PACKAGE_libffmpeg-audio-dec is not set
 CONFIG_PACKAGE_libflac=y
 CONFIG_PACKAGE_libfreetype=y
 CONFIG_PACKAGE_libgdbm=y
+CONFIG_PACKAGE_libgmp=y
 # CONFIG_PACKAGE_libhowl is not set
 CONFIG_PACKAGE_libi2c=y
 # CONFIG_PACKAGE_libiconv is not set
@@ -3663,6 +3664,8 @@ CONFIG_PACKAGE_hostapd-utils=y
 # CONFIG_PACKAGE_hping3 is not set
 CONFIG_PACKAGE_httping=y
 # CONFIG_PACKAGE_httping-nossl is not set
+# CONFIG_PACKAGE_ibrdtn-tools is not set
+# CONFIG_PACKAGE_ibrdtnd is not set
 # CONFIG_PACKAGE_ifenslave is not set
 CONFIG_PACKAGE_ifstat=y
 CONFIG_PACKAGE_iftop=y
