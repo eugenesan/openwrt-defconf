@@ -234,7 +234,7 @@ CONFIG_TARGET_SUFFIX="uclibcgnueabi"
 # CONFIG_IB is not set
 # CONFIG_SDK is not set
 # CONFIG_MAKE_TOOLCHAIN is not set
-# CONFIG_IMAGEOPT is not set
+CONFIG_IMAGEOPT=y
 # CONFIG_PREINITOPT is not set
 CONFIG_TARGET_PREINIT_SUPPRESS_STDERR=y
 CONFIG_TARGET_PREINIT_TIMEOUT=2
@@ -249,7 +249,14 @@ CONFIG_TARGET_INIT_PATH="/bin:/sbin:/usr/bin:/usr/sbin"
 CONFIG_TARGET_INIT_ENV=""
 CONFIG_TARGET_INIT_CMD="/sbin/init"
 CONFIG_TARGET_INIT_SUPPRESS_STDERR=y
-# CONFIG_VERSIONOPT is not set
+CONFIG_VERSIONOPT=y
+CONFIG_VERSION_DIST="OpenWrt"
+CONFIG_VERSION_NICK="Barrier Breaker"
+CONFIG_VERSION_NUMBER="14.07-rc3"
+CONFIG_VERSION_REPO="http://downloads.openwrt.org/%n/%v/%S/packages"
+CONFIG_VERSION_MANUFACTURER=""
+CONFIG_VERSION_PRODUCT=""
+CONFIG_VERSION_HWREV=""
 # CONFIG_PER_FEED_REPO is not set
 # CONFIG_SMIMEOPT is not set
 CONFIG_OPKGSMIME_PASSPHRASE=y
@@ -1168,7 +1175,7 @@ CONFIG_PACKAGE_dropbear=y
 #
 # Configuration
 #
-# CONFIG_DROPBEAR_ECC is not set
+CONFIG_DROPBEAR_ECC=y
 # CONFIG_PACKAGE_ead is not set
 CONFIG_PACKAGE_firewall=y
 CONFIG_PACKAGE_fstools=y
@@ -1437,7 +1444,7 @@ CONFIG_PACKAGE_kmod-hwmon-core=y
 #
 # CONFIG_PACKAGE_kmod-hid is not set
 # CONFIG_PACKAGE_kmod-hid-generic is not set
-# CONFIG_PACKAGE_kmod-input-core is not set
+CONFIG_PACKAGE_kmod-input-core=y
 # CONFIG_PACKAGE_kmod-input-evdev is not set
 # CONFIG_PACKAGE_kmod-input-gpio-encoder is not set
 # CONFIG_PACKAGE_kmod-input-gpio-keys is not set
@@ -1500,8 +1507,11 @@ CONFIG_PACKAGE_kmod-nls-base=y
 #
 # Netfilter Extensions
 #
-# CONFIG_PACKAGE_kmod-arptables is not set
-# CONFIG_PACKAGE_kmod-ebtables is not set
+CONFIG_PACKAGE_kmod-arptables=y
+CONFIG_PACKAGE_kmod-ebtables=y
+CONFIG_PACKAGE_kmod-ebtables-ipv4=y
+CONFIG_PACKAGE_kmod-ebtables-ipv6=y
+CONFIG_PACKAGE_kmod-ebtables-watchers=y
 CONFIG_PACKAGE_kmod-ip6tables=y
 CONFIG_PACKAGE_kmod-ip6tables-extra=y
 CONFIG_PACKAGE_kmod-ipt-account=y
@@ -1844,7 +1854,7 @@ CONFIG_PACKAGE_kmod-ath10k=y
 # CONFIG_ATH10K_STA_FW is not set
 # CONFIG_PACKAGE_kmod-ath5k is not set
 CONFIG_PACKAGE_kmod-ath9k=y
-# CONFIG_ATH9K_SUPPORT_PCOEM is not set
+CONFIG_ATH9K_SUPPORT_PCOEM=y
 CONFIG_PACKAGE_kmod-ath9k-common=y
 # CONFIG_PACKAGE_kmod-ath9k-htc is not set
 # CONFIG_PACKAGE_kmod-b43 is not set
@@ -2081,7 +2091,7 @@ CONFIG_PACKAGE_libsysfs=y
 # CONFIG_PACKAGE_libfko is not set
 CONFIG_PACKAGE_libip4tc=y
 CONFIG_PACKAGE_libip6tc=y
-# CONFIG_PACKAGE_libiptc is not set
+CONFIG_PACKAGE_libiptc=y
 CONFIG_PACKAGE_libxtables=y
 
 #
@@ -2110,7 +2120,7 @@ CONFIG_PACKAGE_libopenssl=y
 CONFIG_OPENSSL_WITH_EC=y
 CONFIG_OPENSSL_WITH_EC2M=y
 CONFIG_OPENSSL_ENGINE_CRYPTO=y
-# CONFIG_OPENSSL_ENGINE_DIGEST is not set
+CONFIG_OPENSSL_ENGINE_DIGEST=y
 # CONFIG_PACKAGE_libpolarssl is not set
 
 #
@@ -2608,10 +2618,10 @@ CONFIG_PACKAGE_luci-base_source=y
 # CONFIG_PACKAGE_luci-lib-json is not set
 # CONFIG_PACKAGE_luci-lib-luaneightbl is not set
 CONFIG_PACKAGE_luci-lib-nixio=y
-CONFIG_PACKAGE_luci-lib-nixio_notls=y
+# CONFIG_PACKAGE_luci-lib-nixio_notls is not set
 # CONFIG_PACKAGE_luci-lib-nixio_axtls is not set
 # CONFIG_PACKAGE_luci-lib-nixio_cyassl is not set
-# CONFIG_PACKAGE_luci-lib-nixio_openssl is not set
+CONFIG_PACKAGE_luci-lib-nixio_openssl=y
 # CONFIG_PACKAGE_luci-lib-px5g is not set
 
 #
@@ -2789,7 +2799,7 @@ CONFIG_PACKAGE_ssmtp=y
 # CONFIG_PACKAGE_libgst1video is not set
 # CONFIG_PACKAGE_libgstreamer1 is not set
 # CONFIG_PACKAGE_mjpg-streamer is not set
-CONFIG_PACKAGE_motion=y
+# CONFIG_PACKAGE_motion is not set
 # CONFIG_PACKAGE_peercast is not set
 # CONFIG_PACKAGE_puppy is not set
 # CONFIG_PACKAGE_rygel is not set
@@ -3119,7 +3129,7 @@ CONFIG_PACKAGE_ncat-ssl=y
 # CONFIG_PACKAGE_ndiff is not set
 # CONFIG_PACKAGE_nmap is not set
 CONFIG_PACKAGE_nmap-ssl=y
-CONFIG_PACKAGE_nping=y
+# CONFIG_PACKAGE_nping is not set
 
 #
 # NNTP
@@ -3189,7 +3199,7 @@ CONFIG_PACKAGE_nping=y
 # CONFIG_PACKAGE_genl is not set
 # CONFIG_PACKAGE_igmpproxy is not set
 # CONFIG_PACKAGE_ip is not set
-CONFIG_PACKAGE_ip-full=y
+# CONFIG_PACKAGE_ip-full is not set
 # CONFIG_PACKAGE_lldpd is not set
 # CONFIG_PACKAGE_mcproxy is not set
 # CONFIG_PACKAGE_mwan3 is not set
@@ -3203,7 +3213,7 @@ CONFIG_PACKAGE_ip-full=y
 # CONFIG_PACKAGE_rinetd is not set
 # CONFIG_PACKAGE_smcroute is not set
 # CONFIG_PACKAGE_ss is not set
-CONFIG_PACKAGE_sslh=y
+# CONFIG_PACKAGE_sslh is not set
 CONFIG_PACKAGE_tc=y
 # CONFIG_PACKAGE_tcpproxy is not set
 # CONFIG_PACKAGE_udp-broadcast-relay is not set
@@ -3341,9 +3351,9 @@ CONFIG_PACKAGE_n2n=y
 # CONFIG_PACKAGE_openvpn-nossl is not set
 CONFIG_PACKAGE_openvpn-openssl=y
 CONFIG_OPENVPN_openssl_ENABLE_LZO=y
-# CONFIG_OPENVPN_openssl_ENABLE_X509_ALT_USERNAME is not set
+CONFIG_OPENVPN_openssl_ENABLE_X509_ALT_USERNAME=y
 CONFIG_OPENVPN_openssl_ENABLE_SERVER=y
-# CONFIG_OPENVPN_openssl_ENABLE_MANAGEMENT is not set
+CONFIG_OPENVPN_openssl_ENABLE_MANAGEMENT=y
 CONFIG_OPENVPN_openssl_ENABLE_HTTP=y
 CONFIG_OPENVPN_openssl_ENABLE_SOCKS=y
 CONFIG_OPENVPN_openssl_ENABLE_FRAGMENT=y
@@ -3351,7 +3361,7 @@ CONFIG_OPENVPN_openssl_ENABLE_MULTIHOME=y
 CONFIG_OPENVPN_openssl_ENABLE_PORT_SHARE=y
 CONFIG_OPENVPN_openssl_ENABLE_DEF_AUTH=y
 CONFIG_OPENVPN_openssl_ENABLE_PF=y
-# CONFIG_OPENVPN_openssl_ENABLE_IPROUTE2 is not set
+CONFIG_OPENVPN_openssl_ENABLE_IPROUTE2=y
 CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
 # CONFIG_PACKAGE_openvpn-polarssl is not set
 # CONFIG_PACKAGE_peervpn is not set
@@ -3428,7 +3438,7 @@ CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
 # CONFIG_PACKAGE_strongswan-mod-xauth-generic is not set
 # CONFIG_PACKAGE_strongswan-mod-xcbc is not set
 # CONFIG_PACKAGE_strongswan-utils is not set
-CONFIG_PACKAGE_tinc=y
+# CONFIG_PACKAGE_tinc is not set
 # CONFIG_PACKAGE_uanytun is not set
 # CONFIG_PACKAGE_uanytun-nettle is not set
 # CONFIG_PACKAGE_uanytun-nocrypt is not set
@@ -3778,7 +3788,7 @@ CONFIG_PACKAGE_vnstati=y
 # CONFIG_PACKAGE_wiviz is not set
 # CONFIG_PACKAGE_wol is not set
 # CONFIG_PACKAGE_wpa-cli is not set
-# CONFIG_PACKAGE_wpa-supplicant is not set
+CONFIG_PACKAGE_wpa-supplicant=y
 # CONFIG_WPA_SUPPLICANT_NO_TIMESTAMP_CHECK is not set
 # CONFIG_WPA_SUPPLICANT_INTERNAL is not set
 CONFIG_WPA_SUPPLICANT_OPENSSL=y
@@ -3977,19 +3987,19 @@ CONFIG_MC_VFS=y
 #
 # zoneinfo
 #
-CONFIG_PACKAGE_zoneinfo-africa=y
-CONFIG_PACKAGE_zoneinfo-asia=y
-CONFIG_PACKAGE_zoneinfo-atlantic=y
-CONFIG_PACKAGE_zoneinfo-australia-nz=y
-CONFIG_PACKAGE_zoneinfo-core=y
-CONFIG_PACKAGE_zoneinfo-europe=y
-CONFIG_PACKAGE_zoneinfo-india=y
-CONFIG_PACKAGE_zoneinfo-middleeast=y
-CONFIG_PACKAGE_zoneinfo-northamerica=y
-CONFIG_PACKAGE_zoneinfo-pacific=y
-CONFIG_PACKAGE_zoneinfo-poles=y
-CONFIG_PACKAGE_zoneinfo-simple=y
-CONFIG_PACKAGE_zoneinfo-southamerica=y
+# CONFIG_PACKAGE_zoneinfo-africa is not set
+# CONFIG_PACKAGE_zoneinfo-asia is not set
+# CONFIG_PACKAGE_zoneinfo-atlantic is not set
+# CONFIG_PACKAGE_zoneinfo-australia-nz is not set
+# CONFIG_PACKAGE_zoneinfo-core is not set
+# CONFIG_PACKAGE_zoneinfo-europe is not set
+# CONFIG_PACKAGE_zoneinfo-india is not set
+# CONFIG_PACKAGE_zoneinfo-middleeast is not set
+# CONFIG_PACKAGE_zoneinfo-northamerica is not set
+# CONFIG_PACKAGE_zoneinfo-pacific is not set
+# CONFIG_PACKAGE_zoneinfo-poles is not set
+# CONFIG_PACKAGE_zoneinfo-simple is not set
+# CONFIG_PACKAGE_zoneinfo-southamerica is not set
 # CONFIG_PACKAGE_alsa-utils is not set
 # CONFIG_PACKAGE_alsa-utils-seq is not set
 # CONFIG_PACKAGE_alsa-utils-tests is not set
@@ -4027,7 +4037,7 @@ CONFIG_PACKAGE_collectd=y
 # CONFIG_PACKAGE_collectd-mod-ascent is not set
 # CONFIG_PACKAGE_collectd-mod-bind is not set
 CONFIG_PACKAGE_collectd-mod-conntrack=y
-# CONFIG_PACKAGE_collectd-mod-contextswitch is not set
+CONFIG_PACKAGE_collectd-mod-contextswitch=y
 CONFIG_PACKAGE_collectd-mod-cpu=y
 # CONFIG_PACKAGE_collectd-mod-csv is not set
 # CONFIG_PACKAGE_collectd-mod-curl is not set
@@ -4039,13 +4049,13 @@ CONFIG_PACKAGE_collectd-mod-dns=y
 # CONFIG_PACKAGE_collectd-mod-filecount is not set
 # CONFIG_PACKAGE_collectd-mod-fscache is not set
 CONFIG_PACKAGE_collectd-mod-interface=y
-# CONFIG_PACKAGE_collectd-mod-iptables is not set
-# CONFIG_PACKAGE_collectd-mod-irq is not set
+CONFIG_PACKAGE_collectd-mod-iptables=y
+CONFIG_PACKAGE_collectd-mod-irq=y
 CONFIG_PACKAGE_collectd-mod-iwinfo=y
 CONFIG_PACKAGE_collectd-mod-load=y
 # CONFIG_PACKAGE_collectd-mod-logfile is not set
 # CONFIG_PACKAGE_collectd-mod-madwifi is not set
-# CONFIG_PACKAGE_collectd-mod-memory is not set
+CONFIG_PACKAGE_collectd-mod-memory=y
 CONFIG_PACKAGE_collectd-mod-network=y
 # CONFIG_PACKAGE_collectd-mod-nginx is not set
 # CONFIG_PACKAGE_collectd-mod-ntpd is not set
@@ -4054,21 +4064,21 @@ CONFIG_PACKAGE_collectd-mod-openvpn=y
 CONFIG_PACKAGE_collectd-mod-ping=y
 # CONFIG_PACKAGE_collectd-mod-postgresql is not set
 # CONFIG_PACKAGE_collectd-mod-powerdns is not set
-# CONFIG_PACKAGE_collectd-mod-processes is not set
-# CONFIG_PACKAGE_collectd-mod-protocols is not set
+CONFIG_PACKAGE_collectd-mod-processes=y
+CONFIG_PACKAGE_collectd-mod-protocols=y
 CONFIG_PACKAGE_collectd-mod-rrdtool=y
 # CONFIG_PACKAGE_collectd-mod-snmp is not set
-# CONFIG_PACKAGE_collectd-mod-syslog is not set
+CONFIG_PACKAGE_collectd-mod-syslog=y
 # CONFIG_PACKAGE_collectd-mod-table is not set
-# CONFIG_PACKAGE_collectd-mod-tail is not set
+CONFIG_PACKAGE_collectd-mod-tail=y
 CONFIG_PACKAGE_collectd-mod-tcpconns=y
 # CONFIG_PACKAGE_collectd-mod-teamspeak2 is not set
 # CONFIG_PACKAGE_collectd-mod-ted is not set
-# CONFIG_PACKAGE_collectd-mod-thermal is not set
+CONFIG_PACKAGE_collectd-mod-thermal=y
 # CONFIG_PACKAGE_collectd-mod-unixsock is not set
-# CONFIG_PACKAGE_collectd-mod-uptime is not set
+CONFIG_PACKAGE_collectd-mod-uptime=y
 # CONFIG_PACKAGE_collectd-mod-users is not set
-# CONFIG_PACKAGE_collectd-mod-vmem is not set
+CONFIG_PACKAGE_collectd-mod-vmem=y
 CONFIG_PACKAGE_collectd-mod-wireless=y
 # CONFIG_PACKAGE_collectd-mod-write-http is not set
 CONFIG_PACKAGE_comgt=y
@@ -4120,7 +4130,7 @@ CONFIG_PACKAGE_dmesg=y
 # CONFIG_PACKAGE_huaweiaktbbo is not set
 # CONFIG_PACKAGE_hwclock is not set
 # CONFIG_PACKAGE_i2c-tools is not set
-CONFIG_PACKAGE_iconv=y
+# CONFIG_PACKAGE_iconv is not set
 # CONFIG_PACKAGE_iioutils is not set
 # CONFIG_PACKAGE_ink is not set
 # CONFIG_PACKAGE_input-utils is not set
@@ -4155,9 +4165,9 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_logger is not set
 # CONFIG_PACKAGE_logrotate is not set
 # CONFIG_PACKAGE_look is not set
-CONFIG_PACKAGE_losetup=y
+# CONFIG_PACKAGE_losetup is not set
 # CONFIG_PACKAGE_lrzsz is not set
-CONFIG_PACKAGE_lsof=y
+# CONFIG_PACKAGE_lsof is not set
 # CONFIG_PACKAGE_lxc is not set
 # CONFIG_PACKAGE_maccalc is not set
 # CONFIG_PACKAGE_macchanger is not set
