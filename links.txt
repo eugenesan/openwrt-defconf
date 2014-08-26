@@ -1,0 +1,3 @@
+https://forum.openwrt.org/viewtopic.php?pid=135483#p135483
+http://wiki.openwrt.org/doc/howtobuild/single.package
+http://git.openwrt.org/
