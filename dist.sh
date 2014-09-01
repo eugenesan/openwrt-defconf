@@ -28,14 +28,23 @@ unpack)
 	git checkout --force HEAD
 
 	for git in . feeds/{luci,management,oldpackages,packages,routing,telephony}; do
-		cd ${git}; git checkout --force HEAD; cd -
+		cd ${TRG}/${git}; git checkout --force HEAD; cd -
 	done
 
-	echo "Reconstructed OpenWRT tree"
+	cp -vf ${TRG}/.config ${TRG}/.config.orig
+	cd ${TRG}/; ./scripts/feeds update -i; cd -
+	cd ${TRG}/; ./scripts/feeds install -a; cd -
+	cp -vf ${TRG}/.config.orig ${TRG}/.config
+	make oldconfig
+	if [ -n "$(diff ${TRG}/.config.orig ${TRG}/.config)" ]; then
+		echo "Something went wrong, configs do not match!"
+	else
+		echo "Reconstructed OpenWRT tree"
+	fi
+
 	;;
 *)
 	echo "Usage: ${0} <pack/unpack>"
 	exit 255
 	;;
 esac
-
