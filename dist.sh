@@ -1,10 +1,12 @@
 #!/bin/sh
 
 # OpenWRT distribution script
-# v0.1
+# v1.0
 
-RELEASE="14.07-rc3-20140827"
+RELEASE="14.07"
+DATE="$(date +%Y%m%d-%H%M)"
 TARGET="kirkwood"
+PROFILE="legacy"
 SRC="$(dirname ${0})"
 TRG="$(pwd)"
 
@@ -13,9 +15,13 @@ pack)
 	echo "Construction OpenWRT distribution package from [${SRC}] to [${TRG}]"
 	read -p "Press enter to chroot or cancel by CTRL+C"
 
-	tar -C ${SRC} -cvzf ${TRG}/openwrt-${RELEASE}.tar.gz .git .config feeds.conf feeds/{luci,management,oldpackages,packages,routing,telephony}/.git "${SRC}/target/linux/${TARGET}/README" "${SRC}/$(basename ${0})"
-	[ ! -d "${SRC}/bin/${TARGET}" ] || rsync -ri --exclude="${TARGET}/packages" "${SRC}/bin" "${TRG}/"
-	rsync -ri "${SRC}/$(basename ${0})" "${TRG}/"
+	tar -C "${SRC}" -cvzf "${TRG}/openwrt-${RELEASE}-${DATE}.tar.gz" .git .config feeds.conf feeds/{luci,management,oldpackages,packages,routing,telephony}/.git "${SRC}/$(basename ${0})"
+	rsync -ri "${SRC}/$(basename ${0})" "${SRC}/target/linux/${TARGET}/README" "${TRG}/"
+	if [ -d "${SRC}/bin/${TARGET}" ]; then
+		cd ${SRC}/bin/${TARGET}
+		rsync -ri openwrt*${TARGET}*${PROFILE}*{rootfs.ubi,rootfs.tar.gz,uImage} "${TRG}/"
+		cd -
+	fi
 
 	echo "Constructed OpenWRT distribution"
 	;;
