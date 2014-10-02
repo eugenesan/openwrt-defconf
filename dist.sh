@@ -1,7 +1,7 @@
 #!/bin/sh -e
 
 # OpenWRT distribution script
-# v1.4
+# v1.5
 
 RELEASE="14.07" # $(date +%Y%m%d-%H%M)
 TARGET="kirkwood"
@@ -14,14 +14,15 @@ pack)
 	echo "Construction OpenWRT distribution package from [${SRC}] to [${TRG}]"
 	read -p "Press enter to pack or cancel by CTRL+C"
 
-	echo -e "|${RELEASE}-${TARGET}-${PROFILE}|" | tee openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.log
+	echo -e "|${RELEASE}-${TARGET}-${PROFILE}|" | tee openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.txt
 
 	for git in . feeds/{luci,management,oldpackages,packages,routing,telephony}; do
-		echo -e "\n[${git}]" | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.log
-		GIT_DIR="${SRC}/${git}/.git" git remote show origin | grep Fetch | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.log
-		GIT_DIR="${SRC}/${git}/.git" git branch -vv | grep "*" | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.log
-		GIT_DIR="${SRC}/${git}/.git" git log -n1 | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.log
+		echo -e "\n[${git}]" | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.txt
+		GIT_DIR="${SRC}/${git}/.git" git fetch --all
 		GIT_DIR="${SRC}/${git}/.git" git gc --aggressive
+		GIT_DIR="${SRC}/${git}/.git" git remote show origin | grep Fetch | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.txt
+		GIT_DIR="${SRC}/${git}/.git" git branch -vv | grep "*" | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.txt
+		GIT_DIR="${SRC}/${git}/.git" git log -n1 --pretty=oneline | tee -a openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.txt
 	done
 	tar -C "${SRC}" -cvf "${TRG}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.git.tar" .git feeds/{luci,management,oldpackages,packages,routing,telephony}/.git
 	tar -C "${SRC}" -cvf "${TRG}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.dl.tar" dl
