@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/sh -e
 
 # OpenWRT distribution script
-# v1.2
+# v1.3
 
 RELEASE="14.07" # $(date +%Y%m%d-%H%M)
 TARGET="kirkwood"
@@ -12,9 +12,11 @@ TRG="$(pwd)"
 case "${1}" in
 pack)
 	echo "Construction OpenWRT distribution package from [${SRC}] to [${TRG}]"
-	read -p "Press enter to chroot or cancel by CTRL+C"
+	read -p "Press enter to pack or cancel by CTRL+C"
 
+	for git in . feeds/{luci,management,oldpackages,packages,routing,telephony}; do GIT_DIR="${SRC}/${git}/.git" git gc --aggressive; done
 	tar -C "${SRC}" -cvzf "${TRG}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.tar.gz" .git .config feeds.conf feeds/{luci,management,oldpackages,packages,routing,telephony}/.git "${SRC}/$(basename ${0})"
+	tar -C "${SRC}" -cvzf "${TRG}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.dl.tar" dl
 	rsync -ri "${SRC}/$(basename ${0})" "${SRC}/target/linux/${TARGET}/README" "${TRG}/"
 	if [ -d "${SRC}/bin/${TARGET}" ]; then
 		cd ${SRC}/bin/${TARGET}
@@ -26,9 +28,10 @@ pack)
 	;;
 unpack)
 	echo "Reconstructing OpenWRT tree in [${TRG}] from [${SRC}]"
-	read -p "Press enter to chroot or cancel by CTRL+C"
+	read -p "Press enter to unpack or cancel by CTRL+C"
 
-	tar -C ${TRG} -xzf ${SRC}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.tar.gz
+	tar -C ${TRG} -xzf "${SRC}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.tar.gz"
+	[ -r "${SRC}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.dl.tar" ] && tar -C ${TRG} -xzf "${SRC}/openwrt-${RELEASE}-${TARGET}-${PROFILE}.dl.tar"
 
 	git checkout --force HEAD
 
@@ -47,6 +50,14 @@ unpack)
 		echo "Reconstructed OpenWRT tree"
 	fi
 
+	;;
+build)
+	echo "Building OpenWRT binaries in [${TRG}]"
+	read -p "Press enter to build or cancel by CTRL+C"
+
+	make V=s -j16
+
+	echo "Built OpenWRT binaries"
 	;;
 *)
 	echo "Usage: ${0} <pack/unpack>"
