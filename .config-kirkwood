@@ -22,7 +22,6 @@ CONFIG_HAVE_DOT_CONFIG=y
 # CONFIG_TARGET_ixp4xx is not set
 # CONFIG_TARGET_lantiq is not set
 # CONFIG_TARGET_malta is not set
-# CONFIG_TARGET_mvebu is not set
 CONFIG_TARGET_kirkwood=y
 # CONFIG_TARGET_orion is not set
 # CONFIG_TARGET_rb532 is not set
@@ -257,7 +256,14 @@ CONFIG_VERSION_REPO="http://downloads.openwrt.org/%n/%v/%S/packages"
 CONFIG_VERSION_MANUFACTURER=""
 CONFIG_VERSION_PRODUCT=""
 CONFIG_VERSION_HWREV=""
-# CONFIG_PER_FEED_REPO is not set
+CONFIG_PER_FEED_REPO=y
+# CONFIG_PER_FEED_REPO_ADD_DISABLED is not set
+CONFIG_FEED_packages=y
+CONFIG_FEED_luci=y
+CONFIG_FEED_routing=y
+CONFIG_FEED_telephony=y
+CONFIG_FEED_management=y
+CONFIG_FEED_oldpackages=y
 # CONFIG_SMIMEOPT is not set
 CONFIG_OPKGSMIME_PASSPHRASE=y
 
